@@ -1,0 +1,18 @@
+!!!
+%html{ :xmlns => "http://www.w3.org/1999/xhtml", :lang => "pt-BR", 'xml:lang' => "en" }
+  -# 
+  -#  application.html.haml
+  -#  foursquare
+  -#  
+  -#  Created by Pedro on 2013-04-09.
+  -#  Copyright 2013 Pedro. All rights reserved.
+  -# 
+  %head
+    %title
+      =@title
+    = stylesheet_link_tag "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+    =yield :head
+  %body
+    = yield

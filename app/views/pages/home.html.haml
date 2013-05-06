@@ -1,0 +1,47 @@
+.container
+  .row
+    .span12
+      %table.table.table-hover.table-condensed
+        %thead 
+          %tr 
+            %th
+              Nome do Bar 
+            %th
+              Checkins
+            %th
+              Usuários
+            %th
+              Tips
+        %tbody 
+          -@local.each do |l|
+            %tr
+              %td
+                =l.name
+              %td
+                =l.stats.checkinsCount
+              %td
+                =l.stats.usersCount
+              %td
+                =l.stats.tipCount
+  .row
+    .span12
+      #graph
+        %svg
+
+:javascript
+  var data = #{@local_json}
+  nv.addGraph(function() {
+    var chart = nv.models.discreteBarChart()
+      .x(function(d) { return d.name })
+      .y(function(d) { return d.stats.tipCount })
+      .staggerLabels(true)
+      .tooltips(true)
+      .showValues(true);
+
+  d3.select("#graph svg")
+    .data(data)
+    .transition().duration(1000)
+    .call(chart);
+  nv.utils.windowResize(chart.update);
+  return chart;
+  });    
