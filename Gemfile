@@ -23,7 +23,7 @@ end
 
 gem 'jquery-rails'
 gem 'd3_rails'
-gem 'nv-d3js-rails'
+gem "nvd3-rails", :git => "git@github.com:adeven/nvd3-rails.git", :submodules => true
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

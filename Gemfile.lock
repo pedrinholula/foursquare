@@ -1,3 +1,11 @@
+GIT
+  remote: git@github.com:adeven/nvd3-rails.git
+  revision: 3897010b862396309b35cb73ba4b73a51ecfc24b
+  submodules: true
+  specs:
+    nvd3-rails (0.0.1)
+      railties (>= 3.2.0, < 5.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -48,8 +56,6 @@ GEM
       compass (>= 0.12.2, < 0.14)
     d3_rails (3.1.4)
       railties (>= 3.1.0)
-    d3js-rails (2.10.3)
-      railties (~> 3.1)
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
@@ -79,9 +85,6 @@ GEM
     mime-types (1.22)
     multi_json (1.7.2)
     multipart-post (1.2.0)
-    nv-d3js-rails (0.0.1)
-      d3js-rails (~> 2.10)
-      railties (~> 3.1)
     polyglot (0.3.3)
     rack (1.4.5)
     rack-cache (1.2)
@@ -140,7 +143,7 @@ DEPENDENCIES
   foursquare2
   haml
   jquery-rails
-  nv-d3js-rails
+  nvd3-rails!
   rails (= 3.2.12)
   sass-rails (~> 3.2.3)
   sqlite3

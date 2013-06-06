@@ -13,6 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
-//= require d3
-//= require nv.d3
+// require d3
+//= require nvd3-rails
 //= require bootstrap
