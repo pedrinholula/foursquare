@@ -1,5 +1,6 @@
 Foursquare::Application.routes.draw do
   
+  resources :pages
   get "pages/home"
   root :to => "pages#home"
 
