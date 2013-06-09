@@ -12,4 +12,5 @@
  *= require_tree .
  *= require bstrap
  *= require nvd3-rails
+ *= require tipsy
  */

@@ -16,3 +16,4 @@
 //= require d3
 // require nvd3-rails
 //= require bootstrap
+// = require tipsy
