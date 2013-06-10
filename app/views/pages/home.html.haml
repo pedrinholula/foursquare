@@ -1,7 +1,7 @@
 .container
   .row
     .span12
-      =form_tag("pages/search", :method => "get") do
-        =label_tag(:local_query, "Search for:")
-        =text_field_tag(:local_query)
+      =form_tag("pages/show", :method => "get") do
+        =label_tag(:lq, "Search for:")
+        =text_field_tag(:lq)
         =submit_tag("Search")

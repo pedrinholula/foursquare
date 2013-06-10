@@ -1,13 +1,16 @@
 Foursquare::Application.routes.draw do
-  
+
+  #Rotas para os locais  
   get "local/index"
   get "local/show"
-
-  resources :pages
-  get "pages/home"
-  root :to => "pages#home"
-
+  match "/local" => "local#index"
+  match "/local/:id" => "local#show"
   
+  #Páginas iniciais
+  get "pages/home"
+  get "pages/show"
+
+  root :to => "pages#home"  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -64,4 +67,5 @@ Foursquare::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
+
 end
