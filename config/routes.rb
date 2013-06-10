@@ -1,7 +1,6 @@
 Foursquare::Application.routes.draw do
   
   get "local/index"
-
   get "local/show"
 
   resources :pages
