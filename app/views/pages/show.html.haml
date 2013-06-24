@@ -16,7 +16,7 @@
           -@local.each do |l|
             %tr
               %td
-                =l.name
+                =link_to l.name, :controller => :local, :action => :show, :id => l.id
               %td
                 =l.stats.checkinsCount
               %td
@@ -26,4 +26,5 @@
   .row-fluid
     .span12
       #graph
-=javascript_include_tag "linechart"
+-#
+  =javascript_include_tag "linechart"

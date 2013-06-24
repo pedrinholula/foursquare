@@ -1,0 +1,10 @@
+-@similar.each do |bolo|
+  =bolo.name
+  %br/ 
+.page-header
+  %h1
+    =@local.name
+    %br/ 
+    %small
+      -@local.categories.each do |c|  
+        =image_tag c.icon, :alt => c.name, :title => c.shortName
