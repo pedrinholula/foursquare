@@ -7,8 +7,22 @@ class LocalController < ApplicationController
     venue_id = params[:id].to_s
     @local = fs.venue(venue_id)
     @similar = fs.search_venues_by_tip(:near => 'Belo Horizonte', :query => @local.name, :categoryId => @local.categories.first.id, :limit=>'5')
+    @venue_photo = fs.venue_photos(venue_id, :group => "checkin", :group => "venue", :limit => 20)
+
+    photo = fs.venue_photos(venue_id, :group => "checkin", :group => "venue", :limit => 100)
+    @gender = Hash.new
+    @gender["Mulheres"] = 0
+    @gender["Homens"] = 0
+    photo.items.each do |count|
+      if count.user.gender == "male"
+        @gender["Homens"]+=1
+      else
+        @gender["Mulheres"]+=1
+      end
+    end
+    
     respond_to do |f|
-      f.json 
+      f.json
       f.html
     end
   end

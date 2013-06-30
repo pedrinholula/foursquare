@@ -1,10 +1,19 @@
--@similar.each do |bolo|
-  =bolo.name
-  %br/ 
-.page-header
-  %h1
-    =@local.name
-    %br/ 
-    %small
-      -@local.categories.each do |c|  
-        =image_tag c.icon, :alt => c.name, :title => c.shortName
+.row-fluid
+  .span4
+    #map
+  .span4
+    %ul.thumbnails
+      -@venue_photo.items.each do |photos|
+        %li
+          %a.thumbnail{:href => "#"} 
+            =image_tag photos.sizes.items.last.url    
+  .span4
+    =@gender.to_json
+:javascript
+  var map = L.map('map').setView([#{@local.location.lat},#{@local.location.lng}], 13);
+  L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png',
+    {attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'})
+    .addTo(map);
+  var marker = L.marker([#{@local.location.lat},#{@local.location.lng}])
+    .addTo(map)
+    .bindPopup("Apenas um pequeno Teste");

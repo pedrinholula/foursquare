@@ -1,11 +1,26 @@
 .row-fluid
-  .span3
-    %ul.nav.nav-pills.nav-stacked
+  .span12
+    .page-header
+      %h1
+        =@local.name
+        %br/ 
+        %small
+          %p 
+            =@local.location.address
+            ="-"
+            =@local.location.city
+            ="/"
+            =@local.location.state
+            ="-"
+            =@local.location.country
+          %p
+            -@local.categories.each do |c|
+              =image_tag c.icon, :alt => c.name, :title => c.shortName
+    %ul.nav.nav-pills
       %li.active
         =link_to "Dados Do Local", "#dados", "data-toggle" => "tab"
       %li
         =link_to "Teste", "#teste", "data-toggle" => "tab"
-  .span9
     .tab-content
       .tab-pane.active#dados
         =render "dados", :local => @local
