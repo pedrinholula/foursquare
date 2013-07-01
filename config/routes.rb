@@ -3,6 +3,7 @@ Foursquare::Application.routes.draw do
   #Rotas para os locais  
   get "local/index"
   get "local/show"
+  get "local/photos"
   match "/local" => "local#index"
   match "/local/:id" => "local#show"
   
