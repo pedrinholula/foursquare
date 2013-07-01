@@ -20,11 +20,15 @@
       %li.active
         =link_to "Dados Do Local", "#dados", "data-toggle" => "tab"
       %li
-        =link_to "Teste", "#teste", "data-toggle" => "tab"
+        =link_to "Dados por Categoria", "#categoria", "data-toggle" => "tab"
+      %li
+        =link_to "Dados por Região Geográfica", "#geografica", "data-toggle" => "tab"
     .tab-content
       .tab-pane.active#dados
         =render "dados", :local => @local
-      .tab-pane#teste
-        Outro Teste
+      .tab-pane#categoria
+        Categoria
+      .tab-pane#categoria
+        Geográfica
 -#graph
   =javascript_include_tag "linechart"
