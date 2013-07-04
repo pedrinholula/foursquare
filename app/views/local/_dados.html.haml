@@ -11,14 +11,14 @@
     #piephoto
 .row-fluid
   .span4
-    -@tips.items.each do |test|
-      =test.likes
+    =@gender.to_json
+  .span4
+    =@likes.to_json
+    %br/ 
+  .span4
+    -#@tips.items.each do |s|
+      =s.id.to_json
       %br/ 
-      
-  .span4
-    Teste2
-  .span4
-    Teste3
 :javascript
   var map = L.map('map').setView([#{@local.location.lat},#{@local.location.lng}], 13);
   L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png',
@@ -29,3 +29,20 @@
     .bindPopup("Apenas um pequeno Teste");
 
 =javascript_include_tag "piechart"
+=javascript_include_tag "d3cloud"
+
+:javascript
+  var fontSize = d3.scale.log().range([10, 100]);
+
+  var layout = cloud()
+      .size([960, 600])
+      .timeInterval(10)
+      .text(function(d) { return d.key; })
+      .font("Impact")
+      .fontSize(function(d) { return fontSize(+d.value); })
+      .rotate(function(d) { return ~~(Math.random() * 5) * 30 - 60; })
+      .padding(1)
+      .on("word", progress)
+      .on("end", draw)
+      .words([…])
+      .start();
