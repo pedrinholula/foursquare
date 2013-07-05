@@ -26,7 +26,7 @@ var svg = d3.select("#piephoto").append("svg")
 d3.json("photos.json", function(error, data) {
   data.forEach(function(d) {
     d.value = +d.value;
-    d.genero = d.gender
+    d.gender = d.gender;
   });
 
   var g = svg.selectAll(".arc")
@@ -42,7 +42,7 @@ d3.json("photos.json", function(error, data) {
     .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
     .attr("dy", ".35em")
     .style("text-anchor", "middle")
-    .text(function(d) {return d.genero;});
+    .text(function(d) {return d.data.gender;});
 });
 
 $(window).load(function() {
