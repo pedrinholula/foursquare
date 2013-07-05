@@ -14,8 +14,9 @@ class LocalController < ApplicationController
       if !@similar.has_key? e.name
         if e.categories.first.id == @local.categories.first.id
           @similar[e.name] = e
-          ph = fs.venue_photos(@similar[e.name].id,:group => "checkin", :group => "venue", :limit => 200)
-          ti = fs.venue_tips(@similar[e.name].id,:sort => :popular, :limit => 200)
+          ph = fs.venue_photos(@similar[e.name].id,:group => "checkin", :group => "venue", :limit => 100)
+          ti = fs.venue_tips(@similar[e.name].id,:sort => :popular, :limit => 100)
+          end
           @similar[e.name].update(ph)
           @similar[e.name].update(ti)
         end
