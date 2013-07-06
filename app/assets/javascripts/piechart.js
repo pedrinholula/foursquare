@@ -52,7 +52,7 @@ $(window).load(function() {
     fade: true, // Habilita o efeito Fade
     title: function() { // Isso que seta o titulo do tipsy
         var d = this.__data__; // Data Parse 
-        return d.value;
+        return d.value + " Fotos" ;
       }
   });
 });
