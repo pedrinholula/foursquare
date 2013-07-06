@@ -1,7 +1,7 @@
 var w = $(".span4").width();
-var margin = {top: 20, right: 20, bottom: 30, left: 40},
+var margin = {top: 20, right: 20, bottom: 150, left: 40},
     width = w - margin.left - margin.right,
-    height = 250 - margin.top - margin.bottom;
+    height = 400 - margin.top - margin.bottom;
 
 var abb = d3.format("s");
 
@@ -38,7 +38,14 @@ d3.json("similar.json", function(error, data) {
   cc.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
-      .call(xAxis);
+      .call(xAxis)
+      .selectAll("text")
+        .style("text-anchor", "end")
+        .attr("dx", "-1em")
+        .attr("dy", ".5em")
+        .attr("transform", function(d) 
+          { return "rotate(-65)" 
+          });;
 
   cc.append("g")
       .attr("class", "y axis")
@@ -77,7 +84,14 @@ d3.json("similar.json", function(error, data) {
   tc.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
-      .call(xAxis);
+      .call(xAxis)
+      .selectAll("text")
+        .style("text-anchor", "end")
+        .attr("dx", "-1em")
+        .attr("dy", ".5em")
+        .attr("transform", function(d) 
+          { return "rotate(-65)" 
+          });;
 
   tc.append("g")
       .attr("class", "y axis")
@@ -116,7 +130,14 @@ d3.json("similar.json", function(error, data) {
   uc.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
-      .call(xAxis);
+      .call(xAxis)
+      .selectAll("text")
+        .style("text-anchor", "end")
+        .attr("dx", "-1em")
+        .attr("dy", ".5em")
+        .attr("transform", function(d) 
+          { return "rotate(-65)" 
+          });
 
   uc.append("g")
       .attr("class", "y axis")
