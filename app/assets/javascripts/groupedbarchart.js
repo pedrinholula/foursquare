@@ -1,5 +1,6 @@
+var w = 1024;
 var margin = {top: 20, right: 20, bottom: 30, left: 100},
-    width = 1024 - margin.left - margin.right,
+    width = w - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
 var abb = d3.format("s");
@@ -13,7 +14,7 @@ var y = d3.scale.linear()
     .range([height, 0]);
 
 var color = d3.scale.ordinal()
-    .range(["#98abc5", "#8a89a6", "#7b6888"]);
+    .range(["#c1f5a0", "#a0c1f5", "#f3ca89"]);
 
 var xAxis = d3.svg.axis()
     .scale(x0)
@@ -24,13 +25,13 @@ var yAxis = d3.svg.axis()
     .orient("left")
     .tickFormat(abb);
 
-var svg = d3.select("#graph").append("svg")
+var svg = d3.select("#similar").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.json("show.json", function(error, data) {
+d3.json("similar.json", function(error, data) {
   var statsName = d3.keys(data[0].stats);
   
   data.forEach(function(d) {

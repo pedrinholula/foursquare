@@ -69,7 +69,7 @@ class LocalController < ApplicationController
     @local = fs.venue(venue_id)
     similar = fs.search_venues_by_tip(:near => 'Belo Horizonte', :query => @local.categories.first.name, :categoryId => @local.categories.first.id, :intent => "match")
     
-    s={}
+    s={@local.name => {:id => @local.id, :stats => @local.stats, :venue_likes => @local.likes}}
     similar.each do |e|
       if !s.has_key? e.name
         if e.categories.first.id == @local.categories.first.id
