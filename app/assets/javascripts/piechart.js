@@ -2,12 +2,12 @@
  * @author Pedro Lopes
  */
 
-var width = $("#piephoto").parent().width();
+var width = $(".span4").width();
 var height = 250;
 var radius = Math.min(width, height) / 2;
 
 var color = d3.scale.ordinal()
-  .range(["#cedffa", "#fad3ce"]);
+  .range(["#a0c1f5", "#f5a0c1","#f5d4a0"]);
 
 var arc = d3.svg.arc()
   .outerRadius(radius - 10)
@@ -17,7 +17,7 @@ var pie = d3.layout.pie()
   .sort(null)
   .value(function(d) { return d.value; });
 
-var svg = d3.select("#piephoto").append("svg")
+var pphoto = d3.select("#piephoto").append("svg")
   .attr("width", width)
   .attr("height", height)
     .append("g")
@@ -29,7 +29,7 @@ d3.json("photos.json", function(error, data) {
     d.gender = d.gender;
   });
 
-  var g = svg.selectAll(".arc")
+  var g = pphoto.selectAll(".arc")
     .data(pie(data))
     .enter().append("g")
     .attr("class", "arc");
