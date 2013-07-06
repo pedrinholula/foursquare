@@ -4,6 +4,8 @@ Foursquare::Application.routes.draw do
   get "local/index"
   get "local/show"
   get "local/photos"
+  get "local/tips"
+  get "local/similar"
   match "/local" => "local#index"
   match "/local/:id" => "local#show"
   

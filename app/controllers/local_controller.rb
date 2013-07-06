@@ -7,22 +7,6 @@ class LocalController < ApplicationController
     flash[:venue_id] = params[:id]
     @local = fs.venue(params[:id])
     @venue_photo = fs.venue_photos(params[:id], :group => "checkin", :group => "venue", :limit => 20)
-    
-    @similar={}
-    similar = fs.search_venues_by_tip(:near => 'Belo Horizonte', :query => @local.categories.first.name, :categoryId => @local.categories.first.id, :intent => "match")
-    similar.each do |e|
-      if !@similar.has_key? e.name
-        if e.categories.first.id == @local.categories.first.id
-          @similar[e.name] = e
-          ph = fs.venue_photos(@similar[e.name].id,:group => "checkin", :group => "venue", :limit => 100)
-          ti = fs.venue_tips(@similar[e.name].id,:sort => :popular, :limit => 100)
-          end
-          @similar[e.name].update(ph)
-          @similar[e.name].update(ti)
-        end
-      end
-    end
-    
     respond_to do |f|
       f.html
     end
@@ -32,7 +16,7 @@ class LocalController < ApplicationController
     fs = Foursquare2::Client.new(:client_id => '5XO4RX3ADLYLERXE2M25HH3KJ0UKQ5OER14MNHMYIMC31CUE', :client_secret => 'ZEQ2TZA1P0OC1R1G5DQGQCQGM1EO0P4JMGH4QEPBZDTT5OCA')
     venue_id = flash[:venue_id]
     flash[:venue_id] = venue_id
-
+    
     photo = fs.venue_photos(venue_id, :group => "checkin", :group => "venue", :limit => 1000)
     p = {}
     photo.items.each do |p1|
@@ -46,14 +30,16 @@ class LocalController < ApplicationController
     p.each do |key, val|
       @photos.push({:gender => key.humanize,:value => val})
     end
-
     respond_to do |f|
       f.json
     end
   end
   
   def tips
-    tip = fs.venue_tips(params[:id],:sort => :popular, :limit => 1000)
+    venue_id = flash[:venue_id]
+    flash[:venue_id] = venue_id
+    tip = fs.venue_tips(venue_id,:sort => :popular, :limit => 1000)
+    
     #Contando quantos likes tem cada dica
     t={}
     tip.items.each do |t1|
@@ -67,6 +53,28 @@ class LocalController < ApplicationController
     t.each do |key,val|
       @tips.push({:likes => key,:value => val})
     end
+    respond_to do |f|
+      f.json
+    end
   end
 
+  def similar
+    venue_id = flash[:venue_id]
+    flash[:venue_id] = venue_id
+    @local = fs.venue(venue_id)
+    similar = fs.search_venues_by_tip(:near => 'Belo Horizonte', :query => @local.categories.first.name, :categoryId => @local.categories.first.id, :intent => "match")
+    
+    @similar={}
+    similar.each do |e|
+      if !@similar.has_key? e.name
+        if e.categories.first.id == @local.categories.first.id
+          @similar[e.name] = {:stats => e.stats, :venue_likes => e.likes}
+          @similar[e.name] = {:stats => e.stats, :venue_likes => e.likes}
+        end
+      end
+    end
+    respond_to do |f|
+      f.json
+    end
+  end
 end
