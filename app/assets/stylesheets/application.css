@@ -11,7 +11,7 @@
  *= require_self
  *= require_tree .
  *= require bstrap
- *= require nvd3-rails
+ * require nvd3-rails
  *= require tipsy
  *= require leaflet
  */

@@ -25,7 +25,7 @@ end
 
 gem 'jquery-rails'
 gem 'd3_rails'
-gem "nvd3-rails", :git => "git@github.com:adeven/nvd3-rails.git", :submodules => true
+#gem "nvd3-rails", :git => "git@github.com:adeven/nvd3-rails.git", :submodules => true
 gem "leaflet-rails"
 
 # To use ActiveModel has_secure_password
