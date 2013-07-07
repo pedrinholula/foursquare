@@ -15,4 +15,14 @@
     = csrf_meta_tags
     =yield :head
   %body
-    = yield
+    .navbar.navbar-inverse.navbar-fixed-top
+      .navbar-inner
+        %a.brand{:href => "/"}
+          F.S.Boiling
+        %form.navbar-form.pull-right{:action => "pages/show"}
+          .input-append
+            %input#appendInput{:type => "text", :name=>:lq, :placeholder=> "Look for a place"}  
+            %button.btn{:type=>"submit"}
+              %i.icon-search
+    .body
+      = yield
