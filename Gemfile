@@ -6,7 +6,7 @@ gem "heroku"
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'pg'
+
 gem "foursquare2"
 gem "haml"
 gem "rails-i18n"
@@ -22,7 +22,12 @@ group :assets,:production do
   # gem 'therubyracer', :platforms => :ruby
   gem 'uglifier', '>= 1.0.3'
 end
-
+group :development do
+  gem 'mysql2'
+end
+group :production do
+  gem 'pg'
+end
 gem 'jquery-rails'
 gem 'd3_rails'
 #gem "nvd3-rails", :git => "git@github.com:adeven/nvd3-rails.git", :submodules => true

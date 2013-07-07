@@ -91,4 +91,26 @@ class LocalController < ApplicationController
       f.json
     end
   end
+
+  def tips_gender
+    fs = Foursquare2::Client.new(:client_id => '5XO4RX3ADLYLERXE2M25HH3KJ0UKQ5OER14MNHMYIMC31CUE', :client_secret => 'ZEQ2TZA1P0OC1R1G5DQGQCQGM1EO0P4JMGH4QEPBZDTT5OCA')
+    venue_id = flash[:venue_id]
+    flash[:venue_id] = venue_id
+    tips = fs.venue_tips(venue_id,:sort => :popular, :limit => 1000)
+    t={}
+    tips.items.each do |t1|
+      if t.has_key? t1.user.gender
+        t[t1.user.gender]+=1
+      else
+        t[t1.user.gender]=1
+      end
+    end
+    @tips=[]
+    t.each do |key, val|
+      @tips.push({:gender => key.humanize,:value => val})
+    end
+    respond_to do |f|
+      f.json
+    end
+  end
 end
