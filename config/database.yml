@@ -1,25 +1,61 @@
-# SQLite version 3.x
-#   gem install sqlite3
+# blah blah blah
+# Instalem o MySql e as libs abaixo:
+# libmysql-ruby libmysqlclient-dev
+# Rode então o Bundle Install 
+# Abra então seu MySql como root (mysql -u root -p)
+# execute o comando abaixo:
+# GRANT ALL PRIVILEGES ON *.* TO sppin@localhost IDENTIFIED BY 'AlAlBoLu' WITH GRANT OPTION;
+# Isso criará um user sppin que poderá apenas ser acessado do localhost no mysql
+# 
+# Descomente a linha do socket relativa ao seu sistema
+
+#Além disso, descomente a linha relativa ao seu socket
+
+# MySQL.  Versions 4.1 and 5.0 are recommended.
+# 
+# Install the MYSQL driver
+#   gem install mysql2
 #
-#   Ensure the SQLite 3 gem is defined in your Gemfile
-#   gem 'sqlite3'
+# Ensure the MySQL gem is defined in your Gemfile
+#   gem 'mysql2'
+#
+# And be sure to use new-style password hashing:
+#   http://dev.mysql.com/doc/refman/5.0/en/old-client.html
 development:
-  adapter: sqlite3
-  database: db/development.sqlite3
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: fs
   pool: 5
-  timeout: 5000
+  username: sppin
+  password: 'AlAlBoLu'
+#  host: 127.0.0.1 # Apenas para Windows
+#  socket: /var/run/mysqld/mysqld.sock #Linux Socket
+#  socket: /tmp/mysql.sock #MAC Socket 
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  adapter: sqlite3
-  database: db/test.sqlite3
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: fs
   pool: 5
-  timeout: 5000
+  username: sppin
+  password: 'AlAlBoLu'
+#  host: 127.0.0.1 # Apenas para Windows
+#  socket: /var/run/mysqld/mysqld.sock #Linux Socket
+#  socket: /tmp/mysql.sock #MAC Socket 
 
 production:
-  adapter: sqlite3
-  database: db/production.sqlite3
-  pool: 5
-  timeout: 5000
+  adapter: mysql2
+  encoding: utf8
+  database: <%= ENV['RDS_DB_NAME'] %>
+  username: <%= ENV['RDS_USERNAME'] %>
+  password: <%= ENV['RDS_PASSWORD'] %>
+  host: <%= ENV['RDS_HOSTNAME']%>
+  port: <%= ENV['RDS_PORT'] %>
+#  host: 127.0.0.1 # Apenas para Windows
+#  socket: /var/run/mysqld/mysqld.sock #Linux Socket
+#  socket: /tmp/mysql.sock #MAC Socket 

@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+ruby '1.9.2'
 gem 'rails', '3.2.12'
 gem "heroku"
 # Bundle edge Rails instead:
@@ -12,7 +13,7 @@ gem "rails-i18n"
 # gem "tipsy-rails"
 # Gems used only for assets and not required
 # in production environments by default.
-group :assets do
+group :assets,:production do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'bootstrap-sass'
