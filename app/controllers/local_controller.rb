@@ -54,8 +54,13 @@ class LocalController < ApplicationController
     end
     @tips=[]
     t.each do |key,val|
-      @tips.push({:likes => key,:value => val})
+      if key == nil
+        key = "0 likes"
+      end
+      t = key.gsub(/[^0-9]/, '').to_i
+      @tips.push({:likes => t,:value => val})
     end
+    @tips = @tips.reverse
     respond_to do |f|
       f.json
     end

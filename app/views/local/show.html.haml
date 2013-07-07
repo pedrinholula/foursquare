@@ -1,32 +1,36 @@
 .row-fluid
   .span12
     .page-header
-      %h1
-        =@local.name
-        %br/ 
-        %small
-          %p 
-            =@local.location.address
-            ="-"
-            =@local.location.city
-            ="/"
-            =@local.location.state
-            ="-"
-            =@local.location.country
-          %p
-            -@local.categories.each do |c|
-              =image_tag c.icon, :alt => c.name, :title => c.shortName
-    %ul.nav.nav-pills
-      %li.active
-        =link_to "Dados Do Local", "#dados", "data-toggle" => "tab"
-      %li
-        =link_to "Dados por Categoria", "#categoria", "data-toggle" => "tab"
-      %li
-        =link_to "Dados por Região Geográfica", "#geografica", "data-toggle" => "tab"
+      .row-fluid
+        .span8
+          %h1
+            =@local.name
+            %br/ 
+            %small
+              %p 
+                =@local.location.address
+                ="-"
+                =@local.location.city
+                ="/"
+                =@local.location.state
+                ="-"
+                =@local.location.country
+              %p
+                -@local.categories.each do |c|
+                  =image_tag c.icon, :alt => c.name, :title => c.shortName
+          %ul.nav.nav-pills
+            %li.active
+              =link_to "Dados Do Local", "#dados", "data-toggle" => "tab"
+            %li
+              =link_to "Dados por Categoria", "#categoria", "data-toggle" => "tab"
+            %li
+              =link_to "Dados por Região Geográfica", "#geografica", "data-toggle" => "tab"
+        .span4
+          #map      
     .tab-content
       .tab-pane.active#dados
         =render "dados", :local => @local
       .tab-pane#categoria
         =render "categoria"
-      .tab-pane#categoria
-        Geográfica
+      .tab-pane#geografica
+        Coming soon

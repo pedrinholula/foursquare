@@ -45,7 +45,7 @@ d3.json("similar.json", function(error, data) {
         .attr("dy", ".5em")
         .attr("transform", function(d) 
           { return "rotate(-65)" 
-          });;
+          });
 
   cc.append("g")
       .attr("class", "y axis")
@@ -91,7 +91,7 @@ d3.json("similar.json", function(error, data) {
         .attr("dy", ".5em")
         .attr("transform", function(d) 
           { return "rotate(-65)" 
-          });;
+          });
 
   tc.append("g")
       .attr("class", "y axis")

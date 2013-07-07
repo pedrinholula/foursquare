@@ -2,7 +2,7 @@
  * @author Pedro Lopes
  */
 
-var width = $(".span4").width();
+var width = $(".span6").width();
 var height = 250;
 var radius = Math.min(width, height) / 2;
 

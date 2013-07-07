@@ -1,25 +1,15 @@
 .row-fluid
-  .span4
-    #map
-  .span4
+  .span6
     %ul.thumbnails
       -@venue_photo.items.each do |photos|
         %li
           %a.thumbnail{:href => "#"} 
             =image_tag photos.sizes.items.last.url    
-  .span4
+  .span6
     #piephoto
 .row-fluid
-  .span4
-    =@tips
-    -@gender.to_json
-  .span4
-    -@likes.to_json
-    %br/ 
-  .span4
-    -#@tips.items.each do |s|
-      =s.id.to_json
-      %br/ 
+  .span6
+    #htips 
 :javascript
   var map = L.map('map').setView([#{@local.location.lat},#{@local.location.lng}], 13);
   L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png',
@@ -30,4 +20,4 @@
     .bindPopup("Apenas um pequeno Teste");
 
 =javascript_include_tag "piechart"
-=javascript_include_tag "d3cloud"
+=javascript_include_tag "histogram"
