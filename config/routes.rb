@@ -8,7 +8,7 @@ Foursquare::Application.routes.draw do
   get "local/similar"
   get "local/tips_gender"
   match "/local" => "local#index"
-  match "/local/:id" => "local#show"
+  match "/local/:id" => "local#show", :as=>:places
   
   #Páginas iniciais
   get "pages/home"

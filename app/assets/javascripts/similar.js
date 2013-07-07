@@ -1,5 +1,5 @@
 var w = $(".span4").width();
-var margin = {top: 20, right: 0, bottom: 150, left: 20},
+var margin = {top: 20, right: 0, bottom: 150, left: 30},
     width = w - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
 
@@ -187,7 +187,7 @@ $(window).load(function() {
     fade: true, // Habilita o efeito Fade
     title: function() { // Isso que seta o titulo do tipsy
         var d = this.__data__; // Data Parse 
-        return d.name + "</br>" + d.users + " Tips";
+        return d.name + "</br>" + d.users + " Users";
       }
   });
 });

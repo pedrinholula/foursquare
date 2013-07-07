@@ -19,7 +19,7 @@
       .navbar-inner
         %a.brand{:href => "/"}
           F.S.Boiling
-        %form.navbar-form.pull-right{:action => "pages/show"}
+        =form_tag({action: "show", controller: "pages"}, class:"navbar-form pull-right",:method=>"get") do
           .input-append
             %input#appendInput{:type => "text", :name=>:lq, :placeholder=> "Look for a place"}  
             %button.btn{:type=>"submit"}

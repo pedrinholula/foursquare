@@ -7,7 +7,7 @@ class LocalController < ApplicationController
     fs = Foursquare2::Client.new(:client_id => '5XO4RX3ADLYLERXE2M25HH3KJ0UKQ5OER14MNHMYIMC31CUE', :client_secret => 'ZEQ2TZA1P0OC1R1G5DQGQCQGM1EO0P4JMGH4QEPBZDTT5OCA')
     flash[:venue_id] = params[:id]
     @local = fs.venue(params[:id]) #Busca dados do Local
-    @venue_photo = fs.venue_photos(params[:id], :group => "checkin", :group => "venue", :limit => 20) #Busca fotos do local 
+    @venue_photo = fs.venue_photos(params[:id], :group => "checkin", :group => "venue", :limit => 32) #Busca fotos do local 
     respond_to do |f|
       f.html
     end
@@ -114,5 +114,6 @@ class LocalController < ApplicationController
     respond_to do |f|
       f.json
     end
+
   end
 end
