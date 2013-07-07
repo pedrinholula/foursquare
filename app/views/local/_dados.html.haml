@@ -1,15 +1,35 @@
 .row-fluid
+  .span12
+    .page-header
+      %h2
+        Info about photos
+.row-fluid
   .span6
+    %h3
+      Photos
     %ul.thumbnails
       -@venue_photo.items.each do |photos|
         %li
           %a.thumbnail{:href => "#"} 
-            =image_tag photos.sizes.items.last.url    
+            =image_tag photos.sizes.items.last.url   
   .span6
+    %h3
+      Photos by Gender
     #piephoto
 .row-fluid
+  .span12
+    .page-header
+      %h2
+        Info about tips 
+.row-fluid
   .span6
-    #htips 
+    %h3
+      Tips's Distribuition 
+    #htips
+  .span6
+    %h3
+      Tips by Gender
+    #gtips 
 :javascript
   var map = L.map('map').setView([#{@local.location.lat},#{@local.location.lng}], 13);
   L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png',

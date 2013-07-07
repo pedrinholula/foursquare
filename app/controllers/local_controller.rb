@@ -28,10 +28,11 @@ class LocalController < ApplicationController
         p[p1.user.gender]=1
       end
     end
-    @photos=[]
+    ps=[]
     p.each do |key, val|
-      @photos.push({:gender => key.humanize,:value => val})
+      ps.push({:gender => key.humanize,:value => val})
     end
+    @photos = ps.sort_by { |hsh| hsh[:gender] }
     respond_to do |f|
       f.json
     end
@@ -105,10 +106,11 @@ class LocalController < ApplicationController
         t[t1.user.gender]=1
       end
     end
-    @tips=[]
+    ts=[]
     t.each do |key, val|
-      @tips.push({:gender => key.humanize,:value => val})
+      ts.push({:gender => key.humanize,:value => val})
     end
+    @tips = ts.sort_by { |hsh| hsh[:gender] }
     respond_to do |f|
       f.json
     end

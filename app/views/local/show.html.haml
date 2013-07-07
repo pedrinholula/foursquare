@@ -20,11 +20,11 @@
                   =image_tag c.icon, :alt => c.name, :title => c.shortName
           %ul.nav.nav-pills
             %li.active
-              =link_to "Dados Do Local", "#dados", "data-toggle" => "tab"
+              =link_to "Data about place", "#dados", "data-toggle" => "tab"
             %li
-              =link_to "Dados por Categoria", "#categoria", "data-toggle" => "tab"
+              =link_to "Data by place's categories", "#categoria", "data-toggle" => "tab"
             %li
-              =link_to "Dados por Região Geográfica", "#geografica", "data-toggle" => "tab"
+              =link_to "Data by geolocation", "#geografica", "data-toggle" => "tab"
         .span4
           #map      
     .tab-content

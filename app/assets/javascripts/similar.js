@@ -1,5 +1,5 @@
 var w = $(".span4").width();
-var margin = {top: 20, right: 20, bottom: 150, left: 40},
+var margin = {top: 20, right: 0, bottom: 150, left: 20},
     width = w - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
 
